@@ -18,17 +18,25 @@ public class Tableau {
     private String support;
     
     private String dimension;
+    
 
     @OneToOne(mappedBy = "oeuvre")
     @ToString.Exclude
     private Transaction vendu;    
     
     @ManyToOne
-    // Peut-être null
+    
     Artiste auteur;
 
     @ToString.Exclude
     @ManyToMany(mappedBy= "oeuvres")
     private List<Exposition> accrochages = new LinkedList<>();
+
+    
+
+
+
+    
+    
     
 }

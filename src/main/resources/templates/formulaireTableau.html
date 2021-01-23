@@ -1,0 +1,37 @@
+<head>
+    <title>Ajouter un tableau</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>	
+</head>
+<body>
+    <h1>Ajouter un tableau</h1>
+
+
+    <form th:object="${tableau}" method="POST" th:action="@{save}">
+        <div>
+            <label for="titre">Titre:</label>
+
+            <input type="text" th:field="*{titre}" placeholder="Nom du tableau"/><br/>
+
+
+        </div>
+        <div> 
+            <label for="auteur">Auteur:</label>
+            <select th:field="*{auteur}">
+                <option th:each="a: ${Artiste}" th:value="${a.id}" th:text="${a.nom}"></option>
+                <option th:value="null">Auteur Inconnu</option>
+            </select></div>
+        <div><label for="support">Support:</label>
+            <input type="text" th:field="*{support}" placeholder="Support du tableau"/></div>			
+        <div><label for="dimension">Dimensions:</label>
+            <input type="text" th:field="*{dimension}" placeholder="Ex: 1m x 2m"/></div><br><br>                     				
+
+
+        <input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
+    </form>	
+    <hr/>
+    <a th:href="@{/}" href="../static/index.html">Retour au menu</a>
+    <hr/>
+</body>
+</html>
